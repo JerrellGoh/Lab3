@@ -4,13 +4,14 @@ SORT_ASCENDING = 0
 SORT_DESCENDING = 1
 
 
+
 def bubble_sort(arr, sorting_order):
 
     # Copy input list to results list
     arr_result = arr.copy()
 
-    # Get number of elements in the list
     n = len(arr_result)
+
 
     if n < 10:
         # Traverse through all array elements
@@ -21,37 +22,67 @@ def bubble_sort(arr, sorting_order):
             # Last i elements are already in place
             for j in range(0, n - i - 1):
 
-                if sorting_order == SORT_ASCENDING:
+                if sorting_order == SORT_ASCENDING: #REQ-01
                     if arr_result[j] > arr_result[j + 1]:
                         arr_result[j], arr_result[j + 1] = arr_result[j + 1], arr_result[j]
 
 
-                elif sorting_order == SORT_DESCENDING:
+                elif sorting_order == SORT_DESCENDING: #REQ-02
                     if arr_result[j] < arr_result[j + 1]:
                         arr_result[j], arr_result[j + 1] = arr_result[j + 1], arr_result[j]
 
                 else:
                     # Return an empty array
-                    arr_result = []
-    else:
-        arr_result = -1
+                    arr_result = 0
+    else:   #REQ-03
+        arr_result = 1
 
     return arr_result
 
+
+def have_not_integer(num_list):
+    for i in num_list:
+        if not isinstance(i,int):
+            print(type(i))
+            return True
+        else:
+            return False
+
+
 def main():
     # Driver code to test above
-    arr = [64, 34, 25, 12, 22, 11, 90]
+    arr = [1.2 , 13 , 4 , 5]
+    
+    result = input("Enter sorting order (0 for ascending, 1 for descending): ")
+    if result == '0':   # Sort in ascending order
+        if len(arr)==0 :  # REQ-04
+            print(0)
+        elif have_not_integer(arr) == True : #REQ-05 
+            print(2)
+        else :
+            result = bubble_sort(arr, SORT_ASCENDING)
+            print("\nSorted array in ascending order: ")
+            print(result)
+    elif result == '1': # Sort in descending order
+        if len(arr)==0 :    # REQ-04
+            print(0)    
+        elif have_not_integer(arr) == True : #REQ-05 
+            print(2)
+        else :
+            print("Sorted array in descending order: ")
+            result = bubble_sort(arr, SORT_DESCENDING)
+            print(result)
+    else: 
+        if len(arr)==0 :
+            print(0)
+        elif have_not_integer(arr) == True : #REQ-05 
+            print(2) 
+        else :
+            print("Invalid sorting order. Please enter 0 for ascending or 1 for descending.")
+            
+        
 
-    # Sort in ascending order
-    result = bubble_sort(arr, SORT_ASCENDING)
-    print("\nSorted array in ascending order: ")
-    print(result)
-
-    # Sort in descending order
-    print("Sorted array in descending order: ")
-    result = bubble_sort(arr, SORT_DESCENDING)
-    print(result)
-
+    
 if __name__ == "__main__":
     main()
 
