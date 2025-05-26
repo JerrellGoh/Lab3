@@ -10,10 +10,9 @@ def test_cost_of_fruits():
     assert (result == 6.0)
 
 
-def test_cost_of_fruits_():
-    result = 0
-    fruit = 'apple'
-    quantity = 10
-    result = price_info.price_list[fruit]*quantity
-    assert (result == 12.0)
+def test_cost_shopping():
+
+    result = price_info.total_cost_shopping()
+    expected_result = 46.75
+    assert (result == expected_result)
     

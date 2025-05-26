@@ -12,6 +12,9 @@ def bubble_sort(arr, sorting_order):
 
     n = len(arr_result)
 
+    for s in arr:
+        if type(s) is not int:
+            return 2
 
     if n < 10:
         # Traverse through all array elements
@@ -40,24 +43,15 @@ def bubble_sort(arr, sorting_order):
     return arr_result
 
 
-def have_not_integer(num_list):
-    for i in num_list:
-        if not isinstance(i,int):
-            print(type(i))
-            return True
-        else:
-            return False
-
-
 def main():
     # Driver code to test above
-    arr = [1.2 , 13 , 4 , 5]
+    arr = [-1, 2 , 13 , 4 , 5]
     
     result = input("Enter sorting order (0 for ascending, 1 for descending): ")
     if result == '0':   # Sort in ascending order
         if len(arr)==0 :  # REQ-04
             print(0)
-        elif have_not_integer(arr) == True : #REQ-05 
+        elif bubble_sort(arr, SORT_ASCENDING) == 2 : #REQ-05 
             print(2)
         else :
             result = bubble_sort(arr, SORT_ASCENDING)
@@ -66,7 +60,7 @@ def main():
     elif result == '1': # Sort in descending order
         if len(arr)==0 :    # REQ-04
             print(0)    
-        elif have_not_integer(arr) == True : #REQ-05 
+        elif bubble_sort(arr, SORT_ASCENDING) == 2 : #REQ-05 
             print(2)
         else :
             print("Sorted array in descending order: ")
@@ -75,7 +69,7 @@ def main():
     else: 
         if len(arr)==0 :
             print(0)
-        elif have_not_integer(arr) == True : #REQ-05 
+        elif bubble_sort(arr, SORT_ASCENDING) == 2 : #REQ-05 
             print(2) 
         else :
             print("Invalid sorting order. Please enter 0 for ascending or 1 for descending.")
